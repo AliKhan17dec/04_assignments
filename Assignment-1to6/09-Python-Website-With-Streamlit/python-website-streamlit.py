@@ -19,14 +19,14 @@ if uploaded_file is not None:
     columns = df.columns.tolist()
     selected_columns = st.selectbox("Select column to filter by", columns)
     unique_values = df[selected_columns].unique()
-    selected_value = st.selectbox("Select value", unique_value)
+    selected_value = st.selectbox("Select value", unique_values)
 
     filtered_df = df[df[selected_columns] == selected_value]
     st.write(filtered_df)
 
     st.subheader("Plot Data")
     x_column = st.selectbox("Select x-axis column", columns)
-    y_column = st.selectbox("Select y-axis columns")
+    y_column = st.selectbox("Select y-axis columns", columns)
 
     if st.button("Generate Plot"):
         st.line_chart(filtered_df.set_index[x_column] [y_column])
